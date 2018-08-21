@@ -1,0 +1,43 @@
+{
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "dependencies": {
+    "rimraf": "^2.6.2",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1",
+    "vuetify": "^1.0.19",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-typescript": "^3.0.1",
+    "@vue/cli-service": "^3.0.1",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "typescript": "^3.0.0",
+    "vue-class-component": "^6.2.0",
+    "vue-cli-plugin-vuetify": "^0.1.6",
+    "vue-property-decorator": "^7.0.0",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "main": "./dist/mylib.common.js",
+  "name": "mylib",
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "npm run clean:dist && npm run build:src && npm run build:types",
+    "build:src": "vue-cli-service build --target lib --name mylib ./src/lib.ts",
+    "build:types": "node ./node_modules/typescript/bin/tsc --declaration --emitDeclarationOnly",
+    "clean:dist": "node ./node_modules/rimraf/bin.js ./dist",
+    "lint": "vue-cli-service lint"
+  },
+  "types": "./dist/types/lib.d.ts",
+  "version": "0.1.0"
+}
